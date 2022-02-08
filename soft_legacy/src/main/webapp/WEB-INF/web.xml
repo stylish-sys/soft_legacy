@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+	<!-- 프로젝트 명 -->
+  	<display-name>soft_legacy</display-name>
+  	
+  	<!-- 인코딩 필터 -->
+  	<filter>
+      	<filter-name>encodingFilter</filter-name>
+      	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+      	<init-param>
+          	<param-name>encoding</param-name>
+          	<param-value>utf-8</param-value>
+      	</init-param>
+      	<init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+  	</filter>
+  	
+  	<!-- 보통은 .do를 사용하지만 사용하지 않는다. -->
+  	<filter-mapping>
+   	   	<filter-name>encodingFilter</filter-name>
+   	   	<url-pattern>/*</url-pattern>
+  	</filter-mapping>
+    
+  	<!-- 초기 화면은 jsp -->
+  	<welcome-file-list>
+	    <welcome-file>index.jsp</welcome-file>
+  	</welcome-file-list>
+  	<login-config>
+		<auth-method>BASIC</auth-method>
+	</login-config>
+	
+	<!-- 세션시간은 30분 -->
+	<session-config>
+        <session-timeout>1800</session-timeout>
+    </session-config>
+    
+    <!-- 설정 시간 -->
+    <context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+				classpath*:egovframework/spring/com/context-*.xml
+		</param-value>
+	</context-param>
+	
+</web-app>
